@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emerald Christian Club - Emerald High School</title>
+  <style>
+    :root {
+      --emerald: #2e8b57;
+      --emerald-dark: #1f6b42;
+      --emerald-light: #3cb371;
+      --navy: #1b2a4a;
+      --navy-light: #253d6b;
+      --silver: #c0c0c0;
+      --silver-light: #e8e8e8;
+      --white: #ffffff;
+      --off-white: #f7f9f8;
+      --text: #2c3e50;
+      --text-light: #5a6c7d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ---- Navigation ---- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--navy);
+      z-index: 1000;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav .logo {
+      color: var(--white);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    nav .logo span {
+      color: var(--emerald-light);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    nav ul li a {
+      color: var(--silver-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background: rgba(255,255,255,0.1);
+      color: var(--white);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    /* ---- Hero ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--emerald-dark) 100%);
+      color: var(--white);
+      padding: 6rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(46,139,87,0.15) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 80%, rgba(27,42,74,0.2) 0%, transparent 50%);
+      animation: float 20s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-2%, -1%); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+    }
+
+    .hero .cross-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: 1px;
+    }
+
+    .hero .tagline {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--silver-light);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .hero .school-name {
+      font-size: 1rem;
+      color: var(--silver);
+      margin-bottom: 2rem;
+    }
+
+    .hero .cta-btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background: var(--emerald);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .hero .cta-btn:hover,
+    .hero .cta-btn:focus {
+      background: var(--emerald-light);
+      transform: translateY(-2px);
+    }
+
+    /* ---- Section Styles ---- */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      font-size: 1.05rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* ---- About ---- */
+    .about {
+      background: var(--off-white);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    .about-text .mission {
+      background: var(--white);
+      border-left: 4px solid var(--emerald);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 8px 8px 0;
+      font-style: italic;
+      color: var(--navy);
+    }
+
+    .about-image {
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--navy) 100%);
+      border-radius: 16px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.1rem;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    /* ---- Schedule ---- */
+    .schedule {
+      background: var(--white);
+    }
+
+    .schedule-card {
+      max-width: 600px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      color: var(--white);
+      box-shadow: 0 8px 30px rgba(27,42,74,0.2);
+    }
+
+    .schedule-card .day {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .schedule-card .details {
+      font-size: 1.1rem;
+      color: var(--silver-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .schedule-card .advisors {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      font-size: 0.95rem;
+      color: var(--silver);
+    }
+
+    .schedule-card .advisors strong {
+      color: var(--emerald-light);
+    }
+
+    /* ---- Events ---- */
+    .events {
+      background: var(--off-white);
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border-top: 4px solid var(--emerald);
+      transition: transform 0.2s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .event-card .event-date {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--emerald);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .event-card h3 {
+      font-size: 1.2rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .event-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+
+    /* ---- Gallery ---- */
+    .gallery {
+      background: var(--white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: var(--silver-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      text-align: center;
+      padding: 1rem;
+      transition: transform 0.3s;
+      border: 1px solid #e0e0e0;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.03);
+    }
+
+    .gallery-item.tall {
+      grid-row: span 2;
+      aspect-ratio: auto;
+    }
+
+    /* ---- Join ---- */
+    .join {
+      background: linear-gradient(135deg, var(--emerald-dark) 0%, var(--navy) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .join .section-title {
+      color: var(--white);
+    }
+
+    .join .section-subtitle {
+      color: var(--silver-light);
+    }
+
+    .join-steps {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .join-step {
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      max-width: 280px;
+      flex: 1;
+      min-width: 220px;
+      backdrop-filter: blur(5px);
+    }
+
+    .join-step .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--emerald);
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    .join-step h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .join-step p {
+      font-size: 0.9rem;
+      color: var(--silver-light);
+    }
+
+    /* ---- Board ---- */
+    .board {
+      background: var(--off-white);
+    }
+
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .board-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      transition: transform 0.2s;
+    }
+
+    .board-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .board-card .avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--emerald) 0%, var(--navy) 100%);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .board-card .role {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--emerald);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.25rem;
+    }
+
+    .board-card .name {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.35rem;
+    }
+
+    .board-card .email {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      word-break: break-all;
+    }
+
+    .board-card .email a {
+      color: var(--emerald-dark);
+      text-decoration: none;
+    }
+
+    .board-card .email a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- Resources ---- */
+    .resources {
+      background: var(--white);
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .resource-card {
+      background: var(--off-white);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      border: 2px solid var(--silver-light);
+      transition: border-color 0.2s;
+    }
+
+    .resource-card:hover {
+      border-color: var(--emerald);
+    }
+
+    .resource-card .resource-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .resource-card h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-card p {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .resource-card .placeholder-box {
+      background: var(--silver-light);
+      border: 2px dashed var(--silver);
+      border-radius: 8px;
+      padding: 1rem;
+      color: var(--text-light);
+      font-size: 0.85rem;
+      font-style: italic;
+    }
+
+    /* ---- Devotional ---- */
+    .devotional {
+      background: var(--off-white);
+    }
+
+    .devotional-intro {
+      text-align: center;
+      font-size: 1.15rem;
+      color: var(--navy);
+      font-weight: 600;
+      margin-bottom: 2.5rem;
+    }
+
+    .soap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+
+    .soap-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.75rem 1.25rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    }
+
+    .soap-card .letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--emerald);
+      color: var(--white);
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .soap-card h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .soap-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    .verse-box {
+      max-width: 750px;
+      margin: 0 auto 2.5rem;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 16px;
+      padding: 2.5rem;
+      text-align: center;
+      color: var(--white);
+      box-shadow: 0 8px 30px rgba(27,42,74,0.15);
+    }
+
+    .verse-box .verse-label {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--emerald-light);
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .verse-box .verse-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--silver-light);
+    }
+
+    .verse-box blockquote {
+      font-size: 1.2rem;
+      font-style: italic;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+
+    .verse-box cite {
+      font-size: 0.95rem;
+      color: var(--silver);
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    .commentary-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .commentary-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2rem;
+      border-left: 4px solid var(--emerald);
+    }
+
+    .commentary-card h3 {
+      font-size: 1.1rem;
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .commentary-card .placeholder-box {
+      background: var(--silver-light);
+      border: 2px dashed var(--silver);
+      border-radius: 8px;
+      padding: 1.5rem;
+      color: var(--text-light);
+      font-size: 0.9rem;
+      font-style: italic;
+      min-height: 100px;
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      background: var(--navy);
+      color: var(--silver);
+      text-align: center;
+      padding: 2.5rem 2rem;
+    }
+
+    footer .footer-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      margin-bottom: 0.25rem;
+    }
+
+    footer .footer-links {
+      margin-top: 1rem;
+    }
+
+    footer .footer-links a {
+      color: var(--emerald-light);
+      text-decoration: none;
+      margin: 0 0.75rem;
+      font-size: 0.85rem;
+    }
+
+    footer .footer-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 900px) {
+      .about-content {
+        grid-template-columns: 1fr;
+      }
+
+      .events-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-item.tall {
+        grid-row: span 1;
+      }
+
+      .soap-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .resources-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .commentary-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: var(--navy);
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li a {
+        display: block;
+        padding: 0.75rem 1rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero .tagline {
+        font-size: 1.2rem;
+      }
+
+      section {
+        padding: 3.5rem 1.25rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
+      }
+
+      .join-steps {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .board-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .soap-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .board-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Main navigation">
+    <div class="logo"><span>ECC</span> Emerald Christian Club</div>
+    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu" role="menubar">
+      <li><a href="#about" role="menuitem">About</a></li>
+      <li><a href="#schedule" role="menuitem">Schedule</a></li>
+      <li><a href="#events" role="menuitem">Events</a></li>
+      <li><a href="#gallery" role="menuitem">Gallery</a></li>
+      <li><a href="#join" role="menuitem">Join</a></li>
+      <li><a href="#board" role="menuitem">Board</a></li>
+      <li><a href="#resources" role="menuitem">Resources</a></li>
+      <li><a href="#devotional" role="menuitem">Devotional</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <div class="cross-icon" aria-hidden="true">&#10013;</div>
+      <h1>Emerald Christian Club</h1>
+      <p class="tagline">Share in Faith</p>
+      <p class="school-name">Emerald High School &bull; Dublin, CA</p>
+      <a href="#join" class="cta-btn">Join Us Today</a>
+    </div>
+  </header>
+
+  <!-- About Us -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <p class="section-subtitle">Growing together in faith and community</p>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Christian Club meetings include a variety of events: short sermons from guest speakers,
+            volunteer events, and bible study! We meet for an hour during access and share our faith
+            with food and friends. Join us for a safe space and a good time!
+          </p>
+          <div class="mission">
+            <strong>Our Mission:</strong> The mission of Emerald Christian Club is to provide a safe space
+            for Christians to grow in faith and give back to the community.
+          </div>
+        </div>
+        <div class="about-image" role="img" aria-label="Club meeting placeholder image">
+          Club Photo Placeholder<br><br>
+          <small>Replace with a photo of the club</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Meeting Schedule -->
+  <section class="schedule" id="schedule">
+    <div class="container">
+      <h2 class="section-title">Meeting Schedule</h2>
+      <p class="section-subtitle">Come hang out with us!</p>
+      <div class="schedule-card">
+        <p class="day">Wednesdays</p>
+        <p class="details">During Access</p>
+        <p class="details">Room G-335</p>
+        <p class="details" style="margin-top: 0.5rem; font-size: 0.95rem; color: var(--silver);">Every other Wednesday</p>
+        <div class="advisors">
+          <strong>Club Advisors:</strong> Ms. Kim &amp; Chef Srour
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upcoming Events -->
+  <section class="events" id="events">
+    <div class="container">
+      <h2 class="section-title">Upcoming Events</h2>
+      <p class="section-subtitle">Here's what we have planned</p>
+      <div class="events-grid">
+        <article class="event-card">
+          <p class="event-date">April 1st</p>
+          <h3>Next Club Meeting</h3>
+          <p>
+            Our next meeting is on April 1st where we will include a fun game,
+            a message of Faith, and more info on our upcoming volunteer opportunity.
+          </p>
+        </article>
+        <article class="event-card">
+          <p class="event-date">Coming Soon</p>
+          <h3>Kids Against Hunger Trip</h3>
+          <p>
+            Our next potential event is a Kids Against Hunger trip to pack food for
+            starving kids around the world.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo Gallery -->
+  <section class="gallery" id="gallery">
+    <div class="container">
+      <h2 class="section-title">Photo Gallery</h2>
+      <p class="section-subtitle">Snapshots from our club</p>
+      <div class="gallery-grid">
+        <div class="gallery-item tall" role="img" aria-label="Club photo placeholder 1">
+          Photo Placeholder 1<br><small>Club group photo</small>
+        </div>
+        <div class="gallery-item" role="img" aria-label="Club photo placeholder 2">
+          Photo Placeholder 2<br><small>Bible study session</small>
+        </div>
+        <div class="gallery-item" role="img" aria-label="Club photo placeholder 3">
+          Photo Placeholder 3<br><small>Guest speaker event</small>
+        </div>
+        <div class="gallery-item" role="img" aria-label="Club photo placeholder 4">
+          Photo Placeholder 4<br><small>Volunteer activity</small>
+        </div>
+        <div class="gallery-item" role="img" aria-label="Club photo placeholder 5">
+          Photo Placeholder 5<br><small>Fellowship &amp; food</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to Join -->
+  <section class="join" id="join">
+    <div class="container">
+      <h2 class="section-title">How to Join</h2>
+      <p class="section-subtitle">It's easy to get involved!</p>
+      <div class="join-steps">
+        <div class="join-step">
+          <div class="step-num">1</div>
+          <h3>Sign Up for Access</h3>
+          <p>Sign up for our next Access period with Chef Srour.</p>
+        </div>
+        <div class="join-step">
+          <div class="step-num">2</div>
+          <h3>Access Full?</h3>
+          <p>If Chef Srour's access is full, sign up under Ms. Kim instead.</p>
+        </div>
+        <div class="join-step">
+          <div class="step-num">3</div>
+          <h3>Show Up!</h3>
+          <p>Meet us in Room G-335 and enjoy food, faith, and friends.</p>
+        </div>
+      </div>
+      <a href="#resources" class="cta-btn" style="background: var(--white); color: var(--navy);">
+        Check Resources Below
+      </a>
+    </div>
+  </section>
+
+  <!-- Meet the Board -->
+  <section class="board" id="board">
+    <div class="container">
+      <h2 class="section-title">Meet the Board</h2>
+      <p class="section-subtitle">The team behind the club</p>
+      <div class="board-grid">
+        <div class="board-card">
+          <div class="avatar">CW</div>
+          <p class="role">Co-President</p>
+          <p class="name">Colin Woo</p>
+          <p class="email"><a href="mailto:woo5740@mydusd.org">woo5740@mydusd.org</a></p>
+        </div>
+        <div class="board-card">
+          <div class="avatar">TM</div>
+          <p class="role">Co-President</p>
+          <p class="name">Taylor Marcello</p>
+          <p class="email"><a href="mailto:marcello####@mydusd.org">marcello####@mydusd.org</a></p>
+        </div>
+        <div class="board-card">
+          <div class="avatar">SJ</div>
+          <p class="role">Secretary</p>
+          <p class="name">Serah Jai</p>
+          <p class="email"><a href="mailto:jai7148@mydusd.org">jai7148@mydusd.org</a></p>
+        </div>
+        <div class="board-card">
+          <div class="avatar">IJ</div>
+          <p class="role">Treasurer</p>
+          <p class="name">Isaac Jimenez</p>
+          <p class="email"><a href="mailto:jimenez####@mydusd.org">jimenez####@mydusd.org</a></p>
+        </div>
+        <div class="board-card">
+          <div class="avatar">DJ</div>
+          <p class="role">Social Media Manager</p>
+          <p class="name">DJ ####</p>
+          <p class="email"><a href="mailto:#####@mydusd.org">#####@mydusd.org</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resources -->
+  <section class="resources" id="resources">
+    <div class="container">
+      <h2 class="section-title">Resources</h2>
+      <p class="section-subtitle">Quick links to stay connected</p>
+      <div class="resources-grid">
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">&#128221;</div>
+          <h3>Google Form</h3>
+          <p>Sign up or submit feedback</p>
+          <div class="placeholder-box">
+            [Google Form Link Placeholder]<br>
+            <small>Replace with your form URL</small>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">&#128218;</div>
+          <h3>Google Classroom</h3>
+          <p>Join our classroom for updates</p>
+          <div class="placeholder-box">
+            [Google Classroom Code Placeholder]<br>
+            <small>Replace with your class code</small>
+          </div>
+        </div>
+        <div class="resource-card">
+          <div class="resource-icon" aria-hidden="true">&#128247;</div>
+          <h3>Instagram</h3>
+          <p>Follow us for the latest</p>
+          <div class="placeholder-box" style="min-height: 120px; display: flex; align-items: center; justify-content: center;">
+            [Instagram QR Code Placeholder]<br>
+            <small>Replace with your QR code image</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Devotional -->
+  <section class="devotional" id="devotional">
+    <div class="container">
+      <h2 class="section-title">Devotional</h2>
+      <p class="devotional-intro">Having trouble finding a Book to read? Follow the Devotional!</p>
+
+      <!-- SOAP Method -->
+      <h3 style="text-align:center; color: var(--navy); margin-bottom: 1.5rem; font-size: 1.2rem;">
+        SOAP Method of Scripture Reading
+      </h3>
+      <div class="soap-grid">
+        <div class="soap-card">
+          <div class="letter">S</div>
+          <h3>Scripture</h3>
+          <p>Choose a passage to read.</p>
+        </div>
+        <div class="soap-card">
+          <div class="letter">O</div>
+          <h3>Observation</h3>
+          <p>What do you observe about the scripture? Check out the commentary.</p>
+        </div>
+        <div class="soap-card">
+          <div class="letter">A</div>
+          <h3>Application</h3>
+          <p>How can you apply this scripture lesson into your own life?</p>
+        </div>
+        <div class="soap-card">
+          <div class="letter">P</div>
+          <h3>Prayer</h3>
+          <p>Pray for guidance on how to incorporate the scripture into your life.</p>
+        </div>
+      </div>
+
+      <!-- Bible Verse of the Day -->
+      <div class="verse-box">
+        <p class="verse-label">Bible Verse of the Day</p>
+        <p class="verse-title">The Word Became Flesh</p>
+        <blockquote>
+          &ldquo;In the beginning was the Word, and the Word was with God, and the Word was God.
+          He was with God in the beginning.&rdquo;
+        </blockquote>
+        <cite>John 1:1&ndash;2</cite>
+      </div>
+
+      <!-- Commentary Sections -->
+      <div class="commentary-section">
+        <div class="commentary-card">
+          <h3>Scripture Commentary</h3>
+          <div class="placeholder-box">
+            [Commentary Placeholder]<br><br>
+            Add commentary text here on the Bible Verse of the Day. Provide context,
+            historical background, and reflections to help readers understand the passage.
+          </div>
+        </div>
+        <div class="commentary-card">
+          <h3>Old Testament Lesson</h3>
+          <div class="placeholder-box">
+            [Old Testament Lesson Placeholder]<br><br>
+            Add an Old Testament lesson commentary here. Include the passage reference,
+            key themes, and how it connects to the larger biblical narrative.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p class="footer-name">Emerald Christian Club</p>
+    <p>Emerald High School &bull; Dublin, CA</p>
+    <p style="margin-top: 0.5rem;">&ldquo;Share in Faith&rdquo;</p>
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#events">Events</a>
+      <a href="#join">Join</a>
+      <a href="#devotional">Devotional</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      var menu = document.getElementById('nav-menu');
+      var toggle = document.querySelector('.menu-toggle');
+      var isActive = menu.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', isActive);
+    }
+
+    // Close menu when a nav link is clicked (mobile)
+    document.querySelectorAll('#nav-menu a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.remove('active');
+        document.querySelector('.menu-toggle').setAttribute('aria-expanded', 'false');
+      });
+    });
+  </script>
+
+</body>
+</html>
